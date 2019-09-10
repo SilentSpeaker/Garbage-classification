@@ -10,7 +10,7 @@
 <view class='ai-view'>
   <text class='txt'>或</text>
   <image src='/images/paizhao.png' class='ai-paizhao' bindtap='onBindCamera' />
-  <text class='tip'>自动识别(开发中)</text>
+  <text class='tip'>自动识别</text>
 
 </view>
 <view class="box" wx:if="{{SHOW_TOP}}">
@@ -23,6 +23,6 @@
 <view class="kefu-box">
   <view class="kefu-body" bindtap="onAikefu">
     <image class="img" src="/images/ai-chat.png"></image>
-    <text class="q-tx">智能询问(暂无)</text>
+    <text class="q-tx">问题反馈(开发中)</text>
   </view>
 </view>

@@ -25,3 +25,8 @@
     </radio-group>
   </view>
 </view>
+
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <view class='gray-text'>加载中...</view>
+</view>

@@ -102,9 +102,7 @@ Page({
           isCamera: false,
           btnTxt: "重拍"
         })
-        wx.showLoading({
-          title: '正在加载中',
-        })
+        that.showLoading();
         wx.getFileSystemManager().readFile({
           filePath: res.tempImagePath,
           encoding: "base64",
@@ -112,7 +110,7 @@ Page({
             that.req(that.data.accessToken, res.data)
           },
           fail: res => {
-            wx.hideLoading()
+            that.hideLoading()
             wx.showToast({
               title: '拍照失败,未获取相机权限或其他原因',
               icon: "none"
@@ -144,13 +142,13 @@ Page({
       }
     })
   },
-  req: function (token, image) {
+  req: function(token, image) {
     var that = this
     http.req("https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + token, {
       "image": image
-    }, function (res) {
-      wx.hideLoading()
-      if (JSON.stringify(res)=='false'){
+    }, function(res) {
+      that.hideLoading()
+      if (JSON.stringify(res) == 'false') {
         wx.showToast({
           icon: 'none',
           title: '网络连接失败',
@@ -165,7 +163,6 @@ Page({
           isShow: true,
           results: results
         })
-
         console.log(results)
       } else {
         wx.showToast({
@@ -175,24 +172,39 @@ Page({
       }
     }, "POST")
   },
-  radioChange: function (e) {
+  radioChange: function(e) {
     console.log(e)
     console.log(e.detail)
     console.log(e.detail.value)
-    wx.showToast({
-      icon: 'none',
-      title: '界面开发中',
-    })
-    // wx.navigateTo({
-    //   url: '/pages/result/list?keyword=' + e.detail.value,
+    // wx.showToast({
+    //   icon: 'none',
+    //   title: '界面开发中',
     // })
-  },  
-  hideModal: function () {
+    wx.navigateTo({
+      url: '/pages/index/search?search=' + e.detail.value,
+    })
+  },
+  hideModal: function() {
     this.setData({
       isShow: false,
     })
   },
   error(e) {
     console.log(e.detail)
+  },
+  showLoading() {
+    // wx.showLoading({
+    //   title: '正在加载中',
+    // })
+    this.setData({
+      loadModal: true
+    });
+  },
+  hideLoading() {
+    console.log('hide')
+    // wx.hideLoading()
+    this.setData({
+      loadModal: false
+    })
   }
 })

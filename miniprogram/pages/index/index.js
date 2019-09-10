@@ -43,9 +43,9 @@ Page({
    * 点击 智能询问
    */
   onAikefu: function() {
-    wx.navigateTo({
-      url: '/pages/android/qa',
-    })
+    // wx.navigateTo({
+    //   url: '/pages/android/qa',
+    // })
   },
   /**
    * 分享 界面
