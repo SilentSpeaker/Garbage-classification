@@ -1,0 +1,25 @@
+/* miniprogram/pages/user/user.wxss */
+
+.user {
+  margin-top: 0px;
+}
+
+.user-icon {
+  color: rgb(0, 204, 119);
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+}
+
+.block--40 {
+  width: 100%;
+  height: 40px;
+  background-color: #0c7;
+}
+
+.logined {
+  margin-left: 10px;
+  color: #338;
+}

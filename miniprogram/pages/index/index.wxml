@@ -1,0 +1,28 @@
+<view class="top-view">
+  <text>保护环境，人人有责</text>
+</view>
+<view class="cu-bar bg-darkGray search">
+  <view class=" search-form  round " bindtap="goSearch">
+    <text class="cuIcon-search text-green"></text>
+    <input type="text" placeholder="让我看看你是什么垃圾" confirm-type="search" bindinput="searchIcon"></input>
+  </view>
+</view>
+<view class='ai-view'>
+  <text class='txt'>或</text>
+  <image src='/images/paizhao.png' class='ai-paizhao' bindtap='onBindCamera' />
+  <text class='tip'>自动识别(开发中)</text>
+
+</view>
+<view class="box" wx:if="{{SHOW_TOP}}">
+  <view class='arrow'></view>
+  <view class='body' bindtap='showModal'>
+    <text>点击这里，可以加入收藏哦</text>
+  </view>
+</view>
+
+<view class="kefu-box">
+  <view class="kefu-body" bindtap="onAikefu">
+    <image class="img" src="/images/ai-chat.png"></image>
+    <text class="q-tx">智能询问(暂无)</text>
+  </view>
+</view>

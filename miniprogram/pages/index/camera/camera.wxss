@@ -1,0 +1,34 @@
+/* miniprogram/pages/index/camera/camera.wxss */
+
+.photo-view {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.takePhoto {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  /* background-color: #00cc77; */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.takePhoto.show {
+  background-color: #00cc77;
+}
+
+.camera-icon {
+  display: none;
+}
+
+.camera-icon.show {
+  display: inline;
+}

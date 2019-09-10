@@ -1,0 +1,23 @@
+<!-- miniprogram/pages/user/user.wxml -->
+<!-- index.wxml -->
+<view class="container">
+  <view class="block--40">
+  </view>
+  <!-- 用户 openid  -->
+  <view class="userinfo user">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}});background-color: transparent;">
+      <!-- <text wx:if="{{nickname=='' && avatarUrl=='' }}" class="cuIcon-people lg text-gray user-icon"></text> -->
+    </button>
+    <image wx:if="{{nickname=='' && avatarUrl=='' }}" src='/images/icon_user_default.png' class="user-icon"></image>
+    <view wx:if="{{nickname=='' && avatarUrl=='' }}">
+      <button class="userinfo-nickname" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击 授权</button>
+    </view>
+    <view wx:elif="{{canIUse}}">请升级微信版本</view>
+    <view wx:else class="userinfo-nickname logined">{{nickname}}</view>
+  </view>
+</view>
+
+<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
+  <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
+  <view class='load-progress-spinner text-green'></view>
+</view>
