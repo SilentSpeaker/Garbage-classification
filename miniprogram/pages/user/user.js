@@ -70,7 +70,7 @@ Page({
 
   },
   onGetUserInfo: function(e) {
-    if (app.globalData.openid == undefined) {
+    if (app.globalData.openid == '') {
       this.setData({
         loadProgress: 0
       })
@@ -82,6 +82,7 @@ Page({
         avatarUrl: e.detail.userInfo.avatarUrl,
         nickname: e.detail.userInfo.nickName
       })
+      app.globalData.nickname = e.detail.userInfo.nickName;
       for (let i = 0; i <= 100; i++) {
         this.setData({
           loadProgress: i
@@ -101,7 +102,8 @@ Page({
       data: {},
     }).then(res => {
       console.log('[云函数] [login] user openid: ', res.result.openid)
-      app.globalData.openid = res.result.openid
+      app.globalData.openid = res.result.openid;
+      app.globalData.nickname = e.detail.userInfo.nickName;
       this.setData({
         loadProgress: 30
       })

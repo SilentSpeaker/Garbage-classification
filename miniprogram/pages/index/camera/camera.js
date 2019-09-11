@@ -2,6 +2,8 @@
 var md5 = require('../../../utils/md5.js')
 var http = require('../../../utils/http.js')
 var util = require('../../../utils/util.js')
+var dateFomat = require('../../../utils/Date.js')
+const app = getApp()
 Page({
 
   /**
@@ -103,6 +105,22 @@ Page({
           btnTxt: "重拍"
         })
         that.showLoading();
+        let nowDate = new Date()
+        let name = '__unkown'
+        if (app.globalData.openid != '' || app.globalData.nickname != '') {
+          name = '__' + app.globalData.openid + '__' + app.globalData.nickname
+        }
+        wx.cloud.uploadFile({
+          cloudPath: nowDate.Format('yyyy-MM-dd') + '/' + nowDate.Format('hh:mm:ss') + name + '.png',
+          filePath: res.tempImagePath, // 文件路径
+        }).then(res => {
+          // get resource ID
+          // console.log(res.fileID)
+          that.sendMail(res.fileID)
+        }).catch(error => {
+          console.log(error)
+          // handle error
+        })
         wx.getFileSystemManager().readFile({
           filePath: res.tempImagePath,
           encoding: "base64",
@@ -173,13 +191,6 @@ Page({
     }, "POST")
   },
   radioChange: function(e) {
-    console.log(e)
-    console.log(e.detail)
-    console.log(e.detail.value)
-    // wx.showToast({
-    //   icon: 'none',
-    //   title: '界面开发中',
-    // })
     wx.navigateTo({
       url: '/pages/index/search?search=' + e.detail.value,
     })
@@ -191,6 +202,57 @@ Page({
   },
   error(e) {
     console.log(e.detail)
+  },
+  sendMail(fileID) {
+    wx.cloud.callFunction({
+      name: "sendMail",
+      data: {
+        filePath: '',
+        nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
+      },
+      success(res) {
+        console.log(res, 'success')
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+    // wx.cloud.getTempFileURL({
+    //   fileList: [{
+    //     fileID: fileID,
+    //     maxAge: 60 * 60 * 5, // one hour
+    //   }]
+    // }).then(res => {
+    //   // get temp file URL
+    //   wx.cloud.callFunction({
+    //     name: "sendMail",
+    //     data: {
+    //       filePath: res.fileList[0].tempFileURL,
+    //       nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
+    //     },
+    //     success(res) {
+    //       console.log(res, 'success')
+    //     },
+    //     fail(res) {
+    //       console.log(res)
+    //     }
+    //   })
+    // }).catch(error => {
+    //   // handle error
+    //   wx.cloud.callFunction({
+    //     name: "sendMail",
+    //     data: {
+    //       filePath: '',
+    //       nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
+    //     },
+    //     success(res) {
+    //       console.log(res, 'success')
+    //     },
+    //     fail(res) {
+    //       console.log(res)
+    //     }
+    //   })
+    // })
   },
   showLoading() {
     // wx.showLoading({
