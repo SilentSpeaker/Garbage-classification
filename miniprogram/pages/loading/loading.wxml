@@ -1,0 +1,10 @@
+<!--miniprogram/pages/loading/loading.wxml-->
+<view class="bg">
+  <image src="bg.png" class="image"></image>
+  <view class="flex margin-top" style="width:80%;margin:0 auto">
+    <view class="cu-progress round sm striped active">
+      <view class="bg-green" style="width:{{progress}}%;"></view>
+    </view>
+    <text class="margin-left" style="font-size:12px">{{progress}}%</text>
+  </view>
+</view>
