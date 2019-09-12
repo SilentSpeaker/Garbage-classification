@@ -43,9 +43,10 @@ Page({
    * 点击 智能询问
    */
   onAikefu: function() {
-    // wx.navigateTo({
-    //   url: '/pages/android/qa',
-    // })
+    wx.showToast({
+      title: '开发中',
+      icon:'none'
+    })
   },
   /**
    * 分享 界面

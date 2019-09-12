@@ -4,6 +4,7 @@ var http = require('../../../utils/http.js')
 var util = require('../../../utils/util.js')
 var dateFomat = require('../../../utils/Date.js')
 const app = getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -111,7 +112,7 @@ Page({
           name = '__' + app.globalData.openid + '__' + app.globalData.nickname
         }
         wx.cloud.uploadFile({
-          cloudPath: nowDate.Format('yyyy-MM-dd') + '/' + nowDate.Format('hh:mm:ss') + name + '.png',
+          cloudPath: nowDate.Format('yyyy-MM-dd') + '/' + nowDate.Format('hh:mm:ss') + name + '.jpg',
           filePath: res.tempImagePath, // 文件路径
         }).then(res => {
           // get resource ID
@@ -204,6 +205,16 @@ Page({
     console.log(e.detail)
   },
   sendMail(fileID) {
+    db.collection('fileList').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        cTime: new Date(),
+        file_id: fileID
+      }
+    }).then(res => {
+      console.log(res)
+    }).catch(console.error)
+
     wx.cloud.callFunction({
       name: "sendMail",
       data: {
@@ -217,42 +228,6 @@ Page({
         console.log(res)
       }
     })
-    // wx.cloud.getTempFileURL({
-    //   fileList: [{
-    //     fileID: fileID,
-    //     maxAge: 60 * 60 * 5, // one hour
-    //   }]
-    // }).then(res => {
-    //   // get temp file URL
-    //   wx.cloud.callFunction({
-    //     name: "sendMail",
-    //     data: {
-    //       filePath: res.fileList[0].tempFileURL,
-    //       nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
-    //     },
-    //     success(res) {
-    //       console.log(res, 'success')
-    //     },
-    //     fail(res) {
-    //       console.log(res)
-    //     }
-    //   })
-    // }).catch(error => {
-    //   // handle error
-    //   wx.cloud.callFunction({
-    //     name: "sendMail",
-    //     data: {
-    //       filePath: '',
-    //       nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
-    //     },
-    //     success(res) {
-    //       console.log(res, 'success')
-    //     },
-    //     fail(res) {
-    //       console.log(res)
-    //     }
-    //   })
-    // })
   },
   showLoading() {
     // wx.showLoading({

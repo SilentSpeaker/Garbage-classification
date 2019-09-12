@@ -23,6 +23,6 @@
 <view class="kefu-box">
   <view class="kefu-body" bindtap="onAikefu">
     <image class="img" src="/images/ai-chat.png"></image>
-    <text class="q-tx">问题反馈(开发中)</text>
+    <text class="q-tx">问题反馈</text>
   </view>
 </view>

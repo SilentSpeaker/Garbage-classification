@@ -5,6 +5,26 @@
   white-space: initial;
 }
 
+.text {
+  line-height: 1.5;
+  padding-left: 15px;
+  text-align: justify;
+  text-indent: 30px;
+  font-size: 15px;
+  font-family: 宋体;
+  font-weight: 800;
+}
+
+.attention {
+  line-height: 1.5;
+  padding-left: 15px;
+  padding-top: 10px;
+  text-align: justify;
+  text-indent: 30px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
 .VerticalNav.nav .cu-item {
   width: 100%;
   text-align: center;
@@ -18,6 +38,7 @@
 .VerticalNav.nav .cu-item.cur {
   background-color: #f1f1f1;
 }
+
 .VerticalNav.nav .cu-item.cur::after {
   content: "";
   width: 8rpx;
@@ -30,9 +51,11 @@
   bottom: 0;
   margin: auto;
 }
-.VerticalBox{
+
+.VerticalBox {
   display: flex;
 }
-.VerticalMain{
+
+.VerticalMain {
   background-color: #f1f1f1;
 }
