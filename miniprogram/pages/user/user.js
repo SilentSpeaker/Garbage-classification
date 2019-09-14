@@ -8,10 +8,10 @@ Page({
    */
   data: {
     canIUse: !wx.canIUse('button.open-type.getUserInfo'),
+    defaultUrl: '/images/icon_user_default.png',
     avatarUrl: '',
     nickname: '',
-    CustomBar: 40,
-    loadProgress: 0
+    loadProgress: false
   },
 
   /**
@@ -72,7 +72,7 @@ Page({
   onGetUserInfo: function(e) {
     if (app.globalData.openid == '') {
       this.setData({
-        loadProgress: 0
+        loadProgress: true
       })
       this.login(e); //
 
@@ -83,17 +83,6 @@ Page({
         nickname: e.detail.userInfo.nickName
       })
       app.globalData.nickname = e.detail.userInfo.nickName;
-      for (let i = 0; i <= 100; i++) {
-        this.setData({
-          loadProgress: i
-        })
-      }
-    }
-    if (this.data.loadProgress >= 100) {
-      this.setData({
-        loadProgress: 0
-      })
-      console.log('加载完毕！')
     }
   },
   login(e) {
@@ -104,9 +93,6 @@ Page({
       console.log('[云函数] [login] user openid: ', res.result.openid)
       app.globalData.openid = res.result.openid;
       app.globalData.nickname = e.detail.userInfo.nickName;
-      this.setData({
-        loadProgress: 30
-      })
       this.saveUserData(e);
     }).catch(err => {
       console.error('[云函数] [login] 调用失败', err)
@@ -114,9 +100,6 @@ Page({
   },
   saveUserData(e) {
     if (e.detail.errMsg == 'getUserInfo:ok') {
-      this.setData({
-        loadProgress: 50
-      })
       console.log(e.detail.userInfo)
       const userInfo = e.detail.userInfo;
       this.refreshUserInfo(userInfo);
@@ -128,9 +111,6 @@ Page({
       }).get()
       .then(res => {
         if (res.data.length == 0) {
-          this.setData({
-            loadProgress: 60
-          })
           db.collection('user').add({
               // data 字段表示需新增的 JSON 数据
               data: {
@@ -151,7 +131,7 @@ Page({
             }).then(res => {
               console.log(res)
               this.setData({
-                loadProgress: 100
+                loadProgress: false
               })
             })
             .catch(console.error)
@@ -159,18 +139,47 @@ Page({
           this.setData({
             avatarUrl: userInfo.avatarUrl,
             nickname: userInfo.nickName,
-            loadProgress: 100
+            loadProgress: false
+          });
+          // 更新用户信息
+          db.collection('user').doc(res.data[0]._id).update({
+            data: {
+              nickname: userInfo.nickName,
+              avatarUrl: userInfo.avatarUrl,
+              sex: userInfo.gender,
+              city: userInfo.city,
+              province: userInfo.province,
+              country: userInfo.country,
+              language: userInfo.language,
+              loginTime: new Date(),
+            }
+          }).then(res => {
+            console.log(`更新了${res.stats.updated}条记录！`)
           })
-        }
-        if (this.data.loadProgress >= 100) {
-          this.setData({
-            loadProgress: 0
-          })
-          console.log('加载完毕！')
         }
       })
       .catch(err => {
         console.error(err)
       })
+  },
+  clickMenu(e) {
+    switch (e.currentTarget.id) {
+      case 'search':
+        wx.navigateTo({
+          url: '/pages/index/search',
+        })
+        break;
+      case 'camera':
+        wx.navigateTo({
+          url: '/pages/index/camera/camera',
+        })
+        break;
+      default:
+        wx.showToast({
+          title: '开发中',
+          icon: 'none'
+        })
+        break;
+    }
   }
 })

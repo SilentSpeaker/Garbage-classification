@@ -1,23 +1,54 @@
 <!-- miniprogram/pages/user/user.wxml -->
 <!-- index.wxml -->
 <view class="container">
-  <view class="block--40">
-  </view>
-  <!-- 用户 openid  -->
-  <view class="userinfo user">
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar" style="background-image: url({{avatarUrl}});background-color: transparent;">
-      <!-- <text wx:if="{{nickname=='' && avatarUrl=='' }}" class="cuIcon-people lg text-gray user-icon"></text> -->
-    </button>
-    <image wx:if="{{nickname=='' && avatarUrl=='' }}" src='/images/icon_user_default.png' class="user-icon"></image>
-    <view wx:if="{{nickname=='' && avatarUrl=='' }}">
-      <button class="userinfo-nickname" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">点击 授权</button>
+  <view class="block--180">
+    <view class="nickname" wx:if="{{avatarUrl!='' || nickname!=''}}">{{nickname}}</view>
+    <button class="cu-btn block bg-brown margin-tb-sm lg" loading="{{loadProgress}}" wx:else style="margin-left: 100rpx;" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">获取头像昵称</button>
+    <view class="user-image">
+      <image wx:if="{{avatarUrl!='' || nickname!=''}}" src='{{avatarUrl}}' style="width:210rpx;height:210rpx;border-radius:50%"></image>
+      <image wx:else src='{{defaultUrl}}' style="width:210rpx;height:210rpx;border-radius:50%"></image>
     </view>
-    <view wx:elif="{{canIUse}}">请升级微信版本</view>
-    <view wx:else class="userinfo-nickname logined">{{nickname}}</view>
+    <view class="menu-float shadow shadow-lg bg-white">
+      <view class="menu-item" id="search" bindtap="clickMenu">
+        <text class="cuIcon-search lg"></text>
+        <text class="menu-item--text">搜一搜</text>
+      </view>
+      <view class="menu-item" id="camera" bindtap="clickMenu">
+        <text class="cuIcon-camera lg"></text>
+        <text class="menu-item--text">自动识别</text>
+      </view>
+    </view>
   </view>
-</view>
+  <view class="block--menu cu-list menu sm-border">
 
-<view class='load-progress {{loadProgress!=0?"show":"hide"}}' style="top:{{CustomBar}}px;">
-  <view class='load-progress-bar bg-green' style="transform: translate3d(-{{100-loadProgress}}%, 0px, 0px);"></view>
-  <view class='load-progress-spinner text-green'></view>
+    <view class="cu-item arrow list--menu--item" id="user-info" bindtap="clickMenu">
+      <view class="content">
+        <text class="cuIcon-people text-grey" style="color:#000"></text>
+        <text class="text-grey">用户信息设置</text>
+      </view>
+    </view>
+
+    <view class="cu-item arrow list--menu--item" id="add-data" bindtap="clickMenu">
+      <view class="content">
+        <text class="cuIcon-roundadd text-grey" style="color:#000"></text>
+        <text class="text-grey">添加数据</text>
+      </view>
+    </view>
+
+    <view class="cu-item arrow list--menu--item" id="review-data" bindtap="clickMenu">
+      <view class="content">
+        <text class="cuIcon-text text-grey" style="color:#000"></text>
+        <text class="text-grey">审核</text>
+      </view>
+    </view>
+
+    <view class="cu-item arrow list--menu--item" id="feedback" bindtap="clickMenu">
+      <view class="content">
+        <text class="cuIcon-mark text-grey" style="color:#000"></text>
+        <text class="text-grey">问题反馈</text>
+      </view>
+    </view>
+  </view>
+  <view class="foot">
+    <text class="cuIcon-favorfill text-grey"></text> update at 9-14</view>
 </view>
