@@ -5,7 +5,7 @@
     <view class="nickname" wx:if="{{avatarUrl!='' || nickname!=''}}">{{nickname}}</view>
     <button class="cu-btn block bg-brown margin-tb-sm lg" loading="{{loadProgress}}" wx:else style="margin-left: 100rpx;" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">获取头像昵称</button>
     <view class="user-image">
-      <image wx:if="{{avatarUrl!='' || nickname!=''}}" src='{{avatarUrl}}' style="width:210rpx;height:210rpx;border-radius:50%"></image>
+      <image wx:if="{{avatarUrl!='' || nickname!=''}}" src='{{avatarUrl}}' style="width:210rpx;height:210rpx;background-color: #fff;border-radius:50%"></image>
       <image wx:else src='{{defaultUrl}}' style="width:210rpx;height:210rpx;border-radius:50%"></image>
     </view>
     <view class="menu-float shadow shadow-lg bg-white">

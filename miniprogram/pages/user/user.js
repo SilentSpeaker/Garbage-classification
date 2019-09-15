@@ -70,7 +70,7 @@ Page({
 
   },
   onGetUserInfo: function(e) {
-    if (app.globalData.openid == '') {
+    if (app.globalData.openid == '' || app.globalData.nickname == '') {
       this.setData({
         loadProgress: true
       })
@@ -151,7 +151,6 @@ Page({
               province: userInfo.province,
               country: userInfo.country,
               language: userInfo.language,
-              loginTime: new Date(),
             }
           }).then(res => {
             console.log(`更新了${res.stats.updated}条记录！`)

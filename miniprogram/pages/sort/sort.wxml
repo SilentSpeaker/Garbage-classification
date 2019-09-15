@@ -1,19 +1,19 @@
 <!--pages/sort/sort.wxml-->
 <view class="VerticalBox">
-  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh);background: #ffffff;padding-top: 20px;">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh);background: #ffffff;padding-top: 40rpx;">
     <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key bindtap='tabSelect' data-id="{{index}}">
       {{item.name}}
     </view>
   </scroll-view>
-  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh);padding-top: 10px;" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh);" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
     <view class="padding-top padding-lr" wx:for="{{list}}" wx:key id="main-{{index}}">
       <view class='cu-bar solid-bottom bg-white'>
         <view class='action'>
           <text class='cuIcon-title text-green'></text> {{item.name}} </view>
       </view>
       <view class="cu-list menu-avatar">
-        <view class="cu-item" style="height:100%;padding-top:110px;padding-bottom:10px;padding-right:10px">
-          <view class="cu-avatar radius lg" style="background-image:url({{item.url}});top: 0rpx;left:50%;transform:translate(-50%,0);width: 100px;height: 100px;object-fit: contain;">
+        <view class="cu-item" style="height:100%;padding-top:240rpx;padding-bottom:20rpx;padding-right:20rpx">
+          <view class="cu-avatar radius lg" style="background-image:url({{item.url}});top: 20rpx;left:50%;transform:translate(-50%,0);width: 200rpx;height: 200rpx;object-fit: contain;">
           </view>
           <!-- <view class="content"> -->
           <view style="">

@@ -7,21 +7,21 @@
 
 .text {
   line-height: 1.5;
-  padding-left: 15px;
+  padding-left: 30rpx;
   text-align: justify;
-  text-indent: 30px;
-  font-size: 15px;
+  text-indent: 60rpx;
+  font-size: 30rpx;
   font-family: 宋体;
   font-weight: 800;
 }
 
 .attention {
   line-height: 1.5;
-  padding-left: 15px;
-  padding-top: 10px;
+  padding-left: 30rpx;
+  padding-top: 20rpx;
   text-align: justify;
-  text-indent: 30px;
-  font-size: 15px;
+  text-indent: 60rpx;
+  font-size: 30rpx;
   font-weight: 800;
 }
 
@@ -31,7 +31,7 @@
   background-color: #fff;
   margin: 0;
   border: none;
-  height: 50px;
+  height: 100rpx;
   position: relative;
 }
 
