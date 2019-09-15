@@ -25,8 +25,7 @@ exports.main = async(event, context) => {
     // 收件人
     to: '821866219@qq.com',
     // 邮件内容，text或者html格式
-    text: event.nickname + '访问了小程序'
-    // + '<img src=' + event.filePath + '>'
+    text: event.detail
     //可以是链接，也可以是验证码
   };
 

@@ -14,7 +14,8 @@ App({
 
     this.globalData = {
       openid: '',
-      nickname: ''
+      nickname: '',
+      functionList: []
     }
   }
 })

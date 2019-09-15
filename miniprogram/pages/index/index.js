@@ -7,7 +7,7 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log("index-onLoad")
+    console.log("首页加载成功！")
     var myDate = new Date();
     var isShowed = wx.getStorageSync("tip")
     if (isShowed != 1) {
@@ -45,7 +45,7 @@ Page({
   onAikefu: function() {
     wx.showToast({
       title: '开发中',
-      icon:'none'
+      icon: 'none'
     })
   },
   /**

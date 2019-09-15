@@ -218,8 +218,7 @@ Page({
     wx.cloud.callFunction({
       name: "sendMail",
       data: {
-        filePath: '',
-        nickname: app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname,
+        detail: (app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname) + ' 访问了[自动识别]！'
       },
       success(res) {
         console.log(res, 'success')
