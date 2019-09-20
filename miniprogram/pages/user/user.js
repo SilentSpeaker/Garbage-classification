@@ -184,7 +184,7 @@ Page({
         break;
     }
   },
-  handleContact(e) {
+  handleContact(e) { // 客服会话返回
     console.log(e)
   }
 })
