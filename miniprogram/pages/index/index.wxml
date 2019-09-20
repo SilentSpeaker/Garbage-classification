@@ -21,8 +21,9 @@
 </view>
 
 <view class="kefu-box">
-  <view class="kefu-body" bindtap="onAikefu">
+  <view class="kefu-body">
     <image class="img" src="/images/ai-chat.png"></image>
-    <text class="q-tx">问题反馈</text>
+    <!-- <text class="q-tx">问题反馈</text> -->
+    <button open-type="contact" bindcontact="handleContact" class="q-tx" style="padding-left: 0rpx;padding-right: 0rpx;">问题反馈</button>
   </view>
 </view>

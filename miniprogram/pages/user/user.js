@@ -163,22 +163,28 @@ Page({
   },
   clickMenu(e) {
     switch (e.currentTarget.id) {
-      case 'search':
+      case 'search': // 搜一搜
         wx.navigateTo({
           url: '/pages/index/search',
         })
         break;
-      case 'camera':
+      case 'camera': // 自动识别
         wx.navigateTo({
           url: '/pages/index/camera/camera',
         })
         break;
-      default:
+      case 'feedback': // 问题反馈
+        console.log('进入客服会话')
+        break;
+      default: // 开发中
         wx.showToast({
           title: '开发中',
           icon: 'none'
         })
         break;
     }
+  },
+  handleContact(e) {
+    console.log(e)
   }
 })

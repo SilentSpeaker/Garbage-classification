@@ -124,3 +124,14 @@
   justify-content: center;
   margin-top: 70rpx;
 }
+
+button::after {
+  /*button的边框样式是通过::after方式实现的*/
+  border: none;
+}
+
+.button-hover {
+  /*点击后样式*/
+  color: #000;
+  background-color: transparent;
+}

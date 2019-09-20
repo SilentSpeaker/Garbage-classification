@@ -5,7 +5,6 @@ Page({
   data: {
     SHOW_TOP: true,
   },
-
   onLoad: function(options) {
     console.log("首页加载成功！")
     var myDate = new Date();
@@ -47,6 +46,11 @@ Page({
       title: '开发中',
       icon: 'none'
     })
+  },
+  handleContact(e) {
+    console.log(e)
+    console.log(e.detail.path)
+    console.log(e.detail.query)
   },
   /**
    * 分享 界面

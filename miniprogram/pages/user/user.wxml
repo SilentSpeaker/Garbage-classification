@@ -42,7 +42,8 @@
       </view>
     </view>
 
-    <view class="cu-item arrow list--menu--item" id="feedback" bindtap="clickMenu">
+    <view class="cu-item arrow list--menu--item" id="feedback" bindtap="clickMenu" style="position:relative">
+      <button open-type="contact" bindcontact="handleContact" style="position: absolute;width:100%;height:100%;"></button>
       <view class="content">
         <text class="cuIcon-mark text-grey" style="color:#000"></text>
         <text class="text-grey">问题反馈</text>
