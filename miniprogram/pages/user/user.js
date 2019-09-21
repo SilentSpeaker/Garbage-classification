@@ -9,8 +9,8 @@ Page({
   data: {
     canIUse: !wx.canIUse('button.open-type.getUserInfo'),
     defaultUrl: '/images/icon_user_default.png',
-    avatarUrl: '',
-    nickname: '',
+    avatarUrl: app.globalData.avatarUrl,
+    nickname: app.globalData.nickname,
     loadProgress: false
   },
 
@@ -83,6 +83,7 @@ Page({
         nickname: e.detail.userInfo.nickName
       })
       app.globalData.nickname = e.detail.userInfo.nickName;
+      app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
     }
   },
   login(e) {
@@ -93,6 +94,7 @@ Page({
       console.log('[云函数] [login] user openid: ', res.result.openid)
       app.globalData.openid = res.result.openid;
       app.globalData.nickname = e.detail.userInfo.nickName;
+      app.globalData.avatarUrl = e.detail.userInfo.avatarUrl;
       this.saveUserData(e);
     }).catch(err => {
       console.error('[云函数] [login] 调用失败', err)
@@ -162,6 +164,15 @@ Page({
       })
   },
   clickMenu(e) {
+    if (app.globalData.avatarUrl == '' && app.globalData.nickname == '') {
+      if (e.currentTarget.id == 'search' || e.currentTarget.id == 'camera') {} else {
+        wx.showToast({
+          title: '请先授权登录',
+          icon: "none"
+        })
+        return
+      }
+    }
     switch (e.currentTarget.id) {
       case 'search': // 搜一搜
         wx.navigateTo({
@@ -175,6 +186,11 @@ Page({
         break;
       case 'feedback': // 问题反馈
         console.log('进入客服会话')
+        break;
+      case 'add-data': // 添加数据
+        wx.navigateTo({
+          url: 'menu/addData',
+        })
         break;
       default: // 开发中
         wx.showToast({

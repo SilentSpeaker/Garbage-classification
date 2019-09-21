@@ -4,6 +4,7 @@ const app = getApp()
 Page({
   data: {
     SHOW_TOP: true,
+    logined: app.globalData.nickname != '' || app.globalData.avatarUrl != ''
   },
   onLoad: function(options) {
     console.log("首页加载成功！")
@@ -21,6 +22,14 @@ Page({
         SHOW_TOP: false
       })
     }
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    this.setData({
+      logined: app.globalData.nickname != '' || app.globalData.avatarUrl != ''
+    })
   },
   /**
    * 点击 搜索
@@ -61,5 +70,16 @@ Page({
       imageUrl: "https://6c61-laji-bopv4-1259505195.tcb.qcloud.la/laji.png?sign=7c8d38e435eb3104fcf5933ebff667f5&t=1561904613",
       path: "pages/index/index"
     }
+  },
+  unLogined() {
+    wx.showToast({
+      title: '请先授权登录',
+      icon: "none"
+    })
+    setTimeout(() => {
+      wx.switchTab({
+        url: '/pages/user/user',
+      })
+    }, 800)
   }
 })

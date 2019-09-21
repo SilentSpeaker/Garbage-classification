@@ -23,7 +23,7 @@
 <view class="kefu-box">
   <view class="kefu-body">
     <image class="img" src="/images/ai-chat.png"></image>
-    <!-- <text class="q-tx">问题反馈</text> -->
-    <button open-type="contact" bindcontact="handleContact" class="q-tx" style="padding-left: 0rpx;padding-right: 0rpx;">问题反馈</button>
+    <button class="q-tx" wx:if="{{logined==false}}" bindtap="unLogined" style="padding-left: 0rpx;padding-right: 0rpx;">问题反馈</button>
+    <button wx:else open-type="contact" bindcontact="handleContact" class="q-tx" style="padding-left: 0rpx;padding-right: 0rpx;">问题反馈</button>
   </view>
 </view>

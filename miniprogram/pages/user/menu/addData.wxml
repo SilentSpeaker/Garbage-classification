@@ -1,0 +1,30 @@
+<!--miniprogram/pages/user/menu/addData.wxml-->
+<view class="thanks-title">
+  非常感谢您为小程序完善数据！
+</view>
+<form>
+  <view class="cu-form-group">
+    <view class="title">名称</view>
+    <input placeholder="垃圾叫什么名字" value="{{name}}" bindinput="nameChange" focus="{{true}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">分类</view>
+    <picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">
+      <view class="picker">
+        {{index?picker[index]:'什么垃圾'}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group" style="padding-top:50rpx;position: relative;">
+    <view class="title" style="position: absolute;top:20rpx">描述</view>
+    <textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="想对垃圾说什么"></textarea>
+  </view>
+  <view style="display:flex;padding:20rpx">
+    <button class="cu-btn block line-orange lg" style="flex:1;margin:20rpx" bindtap="back">返回</button>
+    <button class="cu-btn block bg-blue margin-tb-sm lg" disabled="{{name==''||index==null}}" type="" style="flex:1;margin:20rpx" bindtap="commit">提交</button>
+  </view>
+</form>
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <view class='gray-text'>加载中...</view>
+</view>

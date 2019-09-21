@@ -1,0 +1,8 @@
+/* miniprogram/pages/user/menu/addData.wxss */
+
+.thanks-title {
+  text-align: center;
+  padding: 14rpx;
+  color: #808080;
+  font-size: 24rpx;
+}

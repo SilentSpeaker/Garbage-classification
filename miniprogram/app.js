@@ -15,6 +15,7 @@ App({
     this.globalData = {
       openid: '',
       nickname: '',
+      avatarUrl: '',
       functionList: []
     }
   }
