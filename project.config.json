@@ -83,9 +83,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/user/add",
-					"pathName": "pages/user/menu/addData",
+					"id": 5,
+					"name": "pages/user/menu/review",
+					"pathName": "pages/user/menu/review",
+					"query": "",
 					"scene": null
 				}
 			]

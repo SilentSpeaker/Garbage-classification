@@ -112,7 +112,7 @@ Page({
         openID: app.globalData.openid, // 填入当前用户 openid
       }).get()
       .then(res => {
-        if (res.data.length == 0) {
+        if (res.data.length == 0) { // 新增用户
           db.collection('user').add({
               // data 字段表示需新增的 JSON 数据
               data: {
@@ -137,7 +137,8 @@ Page({
               })
             })
             .catch(console.error)
-        } else {
+        } else { // 更新用户 
+          app.globalData.functionList = res.data[0].functionList
           this.setData({
             avatarUrl: userInfo.avatarUrl,
             nickname: userInfo.nickName,
@@ -190,6 +191,11 @@ Page({
       case 'add-data': // 添加数据
         wx.navigateTo({
           url: 'menu/addData',
+        })
+        break;
+      case 'review-data': // 审核
+        wx.navigateTo({
+          url: 'menu/review',
         })
         break;
       default: // 开发中

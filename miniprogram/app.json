@@ -6,7 +6,8 @@
     "pages/sort/sort",
     "pages/index/camera/camera",
     "pages/user/user",
-    "pages/user/menu/addData"
+    "pages/user/menu/addData",
+    "pages/user/menu/review"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",

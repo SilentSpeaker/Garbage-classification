@@ -1,0 +1,29 @@
+<!--miniprogram/pages/user/menu/review.wxml-->
+<view class="cu-bar bg-white solid-bottom">
+  <view class="action">
+    <text class="cuIcon-title text-orange "></text> {{functionList.length==0?'提交记录':'审核列表'}}
+  </view>
+  <view class="action" wx:if="{{functionList.length!=0}}">
+    <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="menuModal">设置</button>
+  </view>
+</view>
+<view class="cu-list menu">
+  <view class="cu-item" wx:for="{{commitList}}" wx:key="{{item._id}}">
+    <view class="content">
+      <image wx:if="{{item.sortId==1}}" class="img" src='/images/RecycleableWaste.jpg'></image>
+      <image wx:elif="{{item.sortId==2}}" class="img" src='/images/HazardouAwaste.jpg'></image>
+      <image wx:elif="{{item.sortId==3}}" class="img" src='/images/HouseholdfoodWaste.jpg'></image>
+      <image wx:else="{{item.sortId==4}}" class="img" src='/images/ResidualWaste.png'></image>
+      <text class="text-grey">{{item.name}}</text>
+    </view>
+    <view class="action">
+      <view wx:if="{{item.status=='reviewing'}}" class="cu-tag round bg-olive light">审核中</view>
+      <view wx:elif="{{item.status=='unReview'}}" class="cu-tag round bg-orange light">未通过</view>
+      <view wx:elif="{{item.status=='commit'}}" class="cu-tag round bg-blue light">已通过</view>
+    </view>
+  </view>
+</view>
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <view class='gray-text'>加载中...</view>
+</view>

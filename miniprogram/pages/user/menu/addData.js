@@ -153,7 +153,7 @@ Page({
         sortId: this.data.sort[this.data.index]._id,
         des: this.data.des,
         commitTime: new Date(),
-        status: 'unReview'
+        status: 'reviewing'
       }
     }).then(
       res => {
