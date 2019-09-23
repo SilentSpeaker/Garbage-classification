@@ -36,7 +36,7 @@ Page({
           success(res) {
             if (res.result.findIndex(item => item == app.globalData.openid) == -1) {
               console.log('有新用户访问！')
-              wx.cloud.callFunction({
+              /*wx.cloud.callFunction({
                 name: "sendMail",
                 data: {
                   detail: (app.globalData.nickname == '' ? '未知用户' : app.globalData.nickname) + ' 访问了[小程序]！'
@@ -47,7 +47,7 @@ Page({
                 fail(res) {
                   console.log(res)
                 }
-              })
+              })*/
               that.toIndex();
             } else {
               console.log('管理员访问！')

@@ -8,7 +8,16 @@ exports.main = async(event, context) => {
     grantType = 'client_credentials',
     secretKey = 'tPPTP0m1cRxK1aXxEe3x206VtbuLF2Kb',
     url = `https://aip.baidubce.com/oauth/2.0/token`
-
+  /* LMJ
+  AppID='17321732'
+  APIKey='rcaTYoO3eTGgn19MO9VezPiy'
+  secretKey='1WeHukKN8B5ulx0apPr1FLWuuXCuqyZb'
+   */
+  /* Mine
+  AppID='16803143'
+  APIKey='2ypFOy3OTtK6QC8nG6SptEv1'
+  secretKey='tPPTP0m1cRxK1aXxEe3x206VtbuLF2Kb'
+   */
   return new Promise(async(resolve, reject) => {
     try {
       let data = await rq({

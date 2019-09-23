@@ -199,10 +199,10 @@ Page({
         })
         break;
       default: // 开发中
-        wx.showToast({
-          title: '开发中',
-          icon: 'none'
-        })
+        // wx.showToast({
+        //   title: '',
+        //   icon: 'none'
+        // })
         break;
     }
   },
