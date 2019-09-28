@@ -24,7 +24,7 @@
     <view class="cu-item arrow list--menu--item" id="user-info" bindtap="clickMenu">
       <view class="content">
         <text class="cuIcon-people text-grey" style="color:#000"></text>
-        <text class="text-grey">用户信息设置</text>
+        <text class="text-grey">用户使用记录</text>
       </view>
     </view>
 

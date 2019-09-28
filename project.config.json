@@ -8,6 +8,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -84,8 +85,8 @@
 				},
 				{
 					"id": 5,
-					"name": "pages/user/menu/review",
-					"pathName": "pages/user/menu/review",
+					"name": "pages/user/menu/userInfo",
+					"pathName": "pages/user/menu/userInfo",
 					"query": "",
 					"scene": null
 				}

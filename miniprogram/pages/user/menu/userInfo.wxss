@@ -1,0 +1,40 @@
+/* miniprogram/pages/user/menu/userInfo.wxss */
+
+.block--180 {
+  width: 100%;
+  height: 250rpx;
+  background-color: #0c7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.block--menu {
+  margin-top: 140rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.nickname {
+  font-size: 56rpx;
+  color: #fff;
+  font-weight: 400;
+  padding-left: 40rpx;
+}
+
+.user-image {
+  padding-right: 40rpx;
+}
+
+.year {
+  padding-left: 40rpx;
+  padding-top: 30rpx;
+  font-size: 40rpx;
+}
+
+.time {
+  position: relative;
+  top: 18rpx;
+  color: #aaa;
+}
