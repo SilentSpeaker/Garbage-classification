@@ -1,0 +1,30 @@
+<!--miniprogram/pages/user/menu/userInfo.wxml-->
+<view class="block--180">
+  <view class="nickname">{{nickname}}</view>
+  <view class="user-image">
+    <image src='{{avatarUrl}}' style="width:210rpx;height:210rpx;background-color: #fff;border-radius:50%"></image>
+  </view>
+</view>
+
+<view wx:for="{{data}}" wx:for-item="year" wx:for-index="y_index" wx:key="yrar-{{y_index}}">
+  <view class="cu-timeline" wx:for="{{year.month}}" wx:for-item="month" wx:for-index="m_index" wx:key="month-{{m_index}}">
+    <view class="year" wx:if="{{m_index==0}}">{{year.year}}</view>
+    <view class="cu-time" style="margin: 0 10rpx;">{{month.month}}</view>
+    <view class="cu-item cur {{day.type == 'login'?'cuIcon-noticefill':day.type == 'carame'?'cuIcon-camerafill text-green':day.type == 'commit'?'cuIcon-commentfill text-red':''}}" wx:for="{{month.day}}" wx:for-item="day" wx:for-index="d_index" wx:key="day-{{d_index}}">
+      <view class="time">{{day.time}}</view>
+      <view wx:if="{{day.type == 'login'}}" class="content shadow-blur margin-top">
+        您访问了小程序！
+      </view>
+      <view wx:elif="{{day.type == 'carame'}}" class="content bg-green shadow-green margin-top">
+        您使用了自动识别！
+      </view>
+      <view wx:elif="{{day.type == 'commit'}}" class="content bg-red shadow-red margin-top">
+        您为小程序提交了数据！
+      </view>
+    </view>
+  </view>
+</view>
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <!-- <view class='cuIcon-emojifill text-orange'></view> -->
+  <view class='gray-text'>加载中...</view>
+</view>

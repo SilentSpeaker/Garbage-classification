@@ -185,6 +185,11 @@ Page({
           url: '/pages/index/camera/camera',
         })
         break;
+      case 'user-info': // 用户信息设置
+        wx.navigateTo({
+          url: 'menu/userInfo'
+        })
+        break;
       case 'feedback': // 问题反馈
         console.log('进入客服会话')
         break;
