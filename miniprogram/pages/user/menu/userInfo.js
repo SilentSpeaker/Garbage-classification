@@ -81,7 +81,6 @@ Page({
       }).skip(20 * i).limit(20).get()
       data.push(...d.data)
     }
-    console.log(data)
     return {
       data: data
     }
@@ -132,8 +131,6 @@ Page({
     }))
     result.forEach(y => {
       let month = [...new Set(list.filter(f => f.year == y.year).map(m => m.month_day))]
-      console.log(month)
-      // month.sort()
       month.sort((d1, d2) => new Date(d2.replace('月', '-').replace('日', '')) - new Date(d1.replace('月', '-').replace('日', '')))
       month = month.map(m => ({
         month: m,
@@ -151,7 +148,6 @@ Page({
       y.month = month
 
     })
-    console.log(result)
     return result
   },
 
