@@ -114,9 +114,6 @@ Page({
         wx.cloud.uploadFile({
           cloudPath: nowDate.Format('yyyy-MM-dd') + '/' + nowDate.Format('hh:mm:ss') + name + '.jpg',
           filePath: res.tempImagePath, // 文件路径
-          config: {
-            env: 'test-cloud-8076k'
-          }
         }).then(res => {
           // get resource ID
           // console.log(res.fileID)
