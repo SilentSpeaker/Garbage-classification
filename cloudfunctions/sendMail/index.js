@@ -29,6 +29,6 @@ exports.main = async(event, context) => {
     //可以是链接，也可以是验证码
   };
 
-  let res = await transporter.sendMail(mail);
+  let res = 'ok' //await transporter.sendMail(mail);
   return res;
 }
